@@ -14,8 +14,14 @@ recordRoutes.route("/products").get(function(req, res) {
 
 recordRoutes.route("/storage").get(function(req, res) {
     let db_connect = dbo.getDb("magazyn");
-    //zsumować cenę wszystkich produktów
-    db_connect.collection("products").find({}).toArray(function(err, result) {
+    db_connect.collection("products").aggregate([
+        {$project: {
+            _id: 0,
+            name:1,
+            amount:1,
+            value: {$multiply: ["$amount", "$price"]}
+    }},
+    ]).toArray(function(err, result) {
         if (err) throw err;
         res.json(result);
     });
