@@ -12,6 +12,15 @@ recordRoutes.route("/products").get(function(req, res) {
     });
 });
 
+recordRoutes.route("/products/:id").get(function(req, res) {
+    let db_connect = dbo.getDb("magazyn");
+    let myquery = {_id: ObjectId(req.params.id)};
+    db_connect.collection("products").find(myquery).toArray(function(err, result) {
+        if (err) throw err;
+        res.json(result);
+    });
+});
+
 recordRoutes.route("/storage").get(function(req, res) {
     let db_connect = dbo.getDb("magazyn");
     db_connect.collection("products").aggregate([
