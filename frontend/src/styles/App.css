@@ -1,0 +1,41 @@
+.container__div {
+    display: flex;
+    justify-content: center;
+}
+.App {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 200px;
+}
+.products__div {
+    display: grid;
+    grid-template-columns: 300px 300px 300px;
+    gap:30px;
+}
+.productBox__div {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    border: 1px solid gray;
+    background-color: rgb(132, 170, 147);
+    border-radius: 20px;
+    color: rgb(255, 239, 239);
+    font-size: 20px;
+    -webkit-box-shadow: 8px 8px 24px -7px rgba(66, 68, 90, 1);
+    -moz-box-shadow: 8px 8px 24px -7px rgba(66, 68, 90, 1);
+    box-shadow: 8px 8px 24px -7px rgba(66, 68, 90, 1);
+}
+.sort__select {
+    width: 150px;
+    margin: 0 10px 0 10px;
+}
+.filtr__input {
+    margin: 0 10px 0 10px;
+    width: 120px;
+}
+.sort_filter__div {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+}
