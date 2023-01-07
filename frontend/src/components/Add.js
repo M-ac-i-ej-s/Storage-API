@@ -1,39 +1,19 @@
-import React, {useEffect, useState} from 'react'
-import { useSearchParams, Link } from 'react-router-dom';
+import React, { useState} from 'react'
+import { Link } from 'react-router-dom';
 import ClearIcon from '@mui/icons-material/Clear';
 import '../styles/Edit.css'
 
 function Edit() {
-  const [searchParams] = useSearchParams();
-  const id = searchParams.get('id')
-  const [product, setProduct] = useState()
   const [name, setName] = useState()  
   const [price, setPrice] = useState()  
-  const [colors, setColors] = useState([])  
+  const [colors, setColors] = useState([''])  
   const [productionYear, setproductionYear] = useState()  
-
-  useEffect(() => {
-    fetch(`http://localhost:5000/products/${id}`, {
-      method:'GET',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-    })
-    .then(res => res.json())
-    .then(res => {
-        console.log(res)
-      setProduct(res)
-      setName(res[0].name)
-      setPrice(res[0].price)
-      setColors(res[0].colors)
-      setproductionYear(res[0].productionYear)
-    })
-  },[])
+  const [amount, setAmount] = useState()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    fetch(`http://localhost:5000/products/${id}`, {
-      method:'PUT',
+    fetch(`http://localhost:5000/products`, {
+      method:'POST',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -41,7 +21,8 @@ function Edit() {
         name,
         price: +price,
         productionYear: +productionYear,
-        colors
+        colors,
+        amount: +amount
       })
     })
     .then(res => res.text())
@@ -70,6 +51,10 @@ function Edit() {
 
   const handleProductionYear = (e) => {
     setproductionYear(e.target.value)
+  }
+
+  const handleAmount = (e) => {
+    setAmount(e.target.value)
   }
 
   const handleColors = (e, index) => {
@@ -110,6 +95,10 @@ function Edit() {
         <div className='input__div'>
           <span>Production year: </span>
           <input type="number" onChange={handleProductionYear} value={productionYear || ''}/>
+        </div>
+        <div className='input__div'>
+          <span>Amount: </span>
+          <input type="number" onChange={handleAmount} value={amount || ''}/>
         </div>
         <button type='submit' className='btn btn-primary'>Safe</button>
       </form>

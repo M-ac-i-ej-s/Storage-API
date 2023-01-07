@@ -23,7 +23,6 @@ function App() {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res)
       setProducts(res)
       setFiltredProducts(res)
     })
@@ -122,6 +121,24 @@ function App() {
 
   }
 
+  const handleReport = () => {
+    fetch(`http://localhost:5000/storage`, {
+      method:'GET',
+    })
+    .then(res => res.json())
+    .then(res => {
+      const report = res.map(el => {
+        return `name: ${el.name} amount: ${el.amount} value: ${el.value}`
+      })
+      let finalReport = ''
+      report.forEach(el => {
+        finalReport = finalReport + `${el}\n`
+      })
+      alert(finalReport)
+      console.log(res)
+    })
+  }
+
   return (
     <div className='container__div'>
       <div className="App">
@@ -148,6 +165,9 @@ function App() {
           />
           <span>Name:</span>
           <input className='filtr__input' onChange={handleName} value={byName} type="text" placeholder='name'  />
+          <Link to={`/add`}>
+            <button className='btn btn-primary product'>Add product</button>
+          </Link>
         </div>
         <div className='products__div'>
           {filtredProducts.map(el => {
@@ -162,13 +182,16 @@ function App() {
                   })}
                 </div>
                 <span>Production Year: {el.productionYear}</span>
-                <Link to={`/edit/${el._id}`}>
+                <Link to={`/edit?id=${el._id}`}>
                   <button className='btn btn-primary'>Edit</button>
                 </Link>
                 <button onClick={() => handleDelete(el._id)} className='btn btn-danger'>Delete</button>
               </div>
             )
           })}
+        </div>
+        <div className='report__div'>
+          <button onClick={handleReport} className='btn btn-primary report'>Get report</button>
         </div>
       </div>
     </div>

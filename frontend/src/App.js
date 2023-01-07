@@ -7,6 +7,7 @@ import {
 import './styles/App.css'
 import Main from './components/Main'
 import Edit from './components/Edit';
+import Add from './components/Add'
 
 function App() {
 
@@ -14,7 +15,8 @@ function App() {
     <Router>
       <Routes>
         <Route exact path="/" element={<Main/>}/>
-        <Route path="/edit/:id" element={<Edit/>}></Route>
+        <Route path="/edit" element={<Edit/>}/>
+        <Route path="/add" element={<Add/>}/>
       </Routes>
     </Router>
   );
