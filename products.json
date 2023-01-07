@@ -1,0 +1,11 @@
+{"id":1,"name": "Iphone 13", "price":4000,"amount":12 ,"productionYear":2021,"colors":["black","white","blue"]}
+{"id":2,"name": "Iphone 12", "price":3500,"amount":10,"productionYear":2020,"colors":["black","white"]}
+{"id":3,"name": "Iphone X", "price":3000,"amount":8,"productionYear":2019,"colors":["black","white","green"]}
+{"id":4,"name": "Iphone 8", "price":2500,"amount":6,"productionYear":2018,"colors":["black","white","purple"]}
+{"id":5,"name": "Iphone 7", "price":2000,"amount":4,"productionYear":2017,"colors":["black"]}
+{"id":6,"name": "Iphone 6", "price":1500,"amount":14,"productionYear":2016,"colors":["black","white","yellow"]}
+{"id":7,"name": "apple watch SE", "price":1900,"amount":20,"productionYear":2020,"colors":["white"]}
+{"id":8,"name": "apple watch SE2", "price":2100,"amount":31,"productionYear":2021,"colors":["grey"]}
+{"id":9,"name": "Ipad mini", "price":5000,"amount":2,"productionYear":2014,"colors":["orange"]}
+{"id":10,"name": "Ipad air", "price":6000,"amount":3,"productionYear":2017,"colors":["red"]}
+{"id":11,"name": "Ipad pro", "price":7000,"amount":19,"productionYear":2023,"colors":["black"]}
